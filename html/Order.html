@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="Eng">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Main</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>  
+</style>
+</head>
+<body>
+<header>
+    <div class="no1">
+        <section class="logo">
+            <img src="../images/Preview.jpg" alt="logo">
+        </section>
+        <nav>
+            <section class="topnav">
+                <a href="Log In.html">Log In</a>
+                <a href="Order.html" class="active">Order</a>
+                <a href="Blog.html">Blog</a>
+                <a href="About Us.html">About Us</a>
+                <a href="Contact.html">Contact us</a>
+                <a href="Menu.html">Menu</a>
+                <a href="Index.html">Home</a>
+            </section>
+        </nav>
+    </div>
+</header>
+
+<br><br><br><br><br><br>
+<h1 class="Order">Order Form</h1>
+<div class="Order_form">
+<form id="food-order-form">
+    <ul>
+    <!-- Dynamic content for selected items will be inserted here -->
+    </ul>
+</form>
+<div id="subtotal"></div><br><br><br>
+<button class="Submit_order" id="submit-order-btn" onclick="submitOrder()">Submit Order</button>
+</div>
+
+<br>
+<!-- Email subscription for coupon and discount -->
+<section>
+    <form class="subscribe">
+        <h2>SUBSCRIBE</h2>
+        <p>Sign up to hear from us about sales, coupons, and events</p>
+        <input type="email" id="sub" placeholder="Email">
+        <button id="sub1" onclick="subscribe()">Sign up</button>
+    </form>
+</section>
+
+<!-- JavaScript code for menu items and order form -->
+<script>
+
+    let subtotal = 0;
+
+    window.addEventListener('DOMContentLoaded', function() {
+        const selectedItemName = localStorage.getItem('selectedItemName');
+        const selectedItemPrice = localStorage.getItem('selectedItemPrice');
+
+        if (selectedItemName && selectedItemPrice) {
+            openModal(selectedItemName, parseFloat(selectedItemPrice));
+            localStorage.removeItem('selectedItemName'); // Remove the item from localStorage
+            localStorage.removeItem('selectedItemPrice');
+        }
+    });
+
+    // Function to open modal with item details
+    function openModal(itemName, itemPrice) {
+        const modal = document.getElementById("myModal");
+        modal.style.display = "block";
+        const modalContent = document.getElementById("modal-content");
+        modalContent.innerHTML = `
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>${itemName}</h2>
+            <p>Price: $${itemPrice.toFixed(2)}</p>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
+            <button onclick="addToOrder('${itemName}', ${itemPrice})">Add to Cart</button>
+        `;
+    }
+
+    // Function to close modal
+    function closeModal() {
+        const modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+
+    // Function to add item to order
+    function addToOrder(itemName, itemPrice) {
+        const quantity = parseInt(document.getElementById("quantity").value);
+        const orderForm = document.getElementById("food-order-form");
+        const totalPrice = itemPrice * quantity;
+        subtotal += totalPrice;
+        const orderItem = document.createElement('div');
+        orderItem.innerHTML = `<p>${itemName}:  Quantity - ${quantity}, Total Price - $${totalPrice.toFixed(2)}</p>` ;
+        orderForm.appendChild(orderItem);
+        document.getElementById("subtotal").innerText = `Subtotal: $${subtotal.toFixed(2)}`;
+        closeModal();
+    }
+    
+
+    // Function to submit order
+    function submitOrder() {
+        const orderForm = document.getElementById("food-order-form");
+        if (orderForm.children.length === 0) {
+            alert("Your order is empty. Please add items before submitting.");
+        } else {
+            console.log("Order submitted:", orderForm.innerHTML);
+            alert("Your order has been submitted. Thank you!");
+            orderForm.innerHTML = "";
+            subtotal = 0;
+            document.getElementById("subtotal").innerText = "";
+        }
+    }
+
+    // Function to handle subscription
+    function subscribe() {
+        alert("Thank you for subscribing!");
+    }
+</script>
+
+<!-- Order Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content" id="modal-content">
+        <!-- Item details will be inserted here -->
+    </div>
+</div>
+
+<!-- Cafeteria Copyright -->
+<footer>
+    <p>Copyright &copy; 2024 naija cuisine cafeteria. All rights reserved</p>
+</footer>
+
+<hr>
+
+<!-- Business operation hours and location -->
+<aside class="operating">
+    <section class="hours">
+        <h3>Opening Hours</h3>
+        <p>Monday - 10am to 8pm</p>
+        <p>Tuesday - 10am to 8pm</p>
+        <p>Wednesday - 11am to 7pm</p>
+        <p>Thursday - 9am to 6pm</p>
+        <p>Friday - 9am to 6pm</p>
+        <p>Saturday - 11am to 4pm</p>
+        <p>Sunday - closed</p>
+    </section>
+
+    <section class="Contact">
+        <h3>Contact</h3>
+        <p>Phone: (832) 576-8400</p>
+        <p>Email: naijacuisine@gmail.com</p>
+    </section>
+
+    <section class="location">
+        <h3>Location</h3>
+        <p>14000 University Blvd, Sugarland</p>
+        <p>Texas 77479</p>
+    </section>
+</aside>
+
+</body>
+</html>

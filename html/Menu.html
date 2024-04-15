@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="Eng">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width initial-scale=1.0">
+<title>Main</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+    <!--My main page top navigation and cafeteria logo-->
+    <div class="no1">
+        <section class="logo">
+            <img src="../images/Preview.jpg" alt="logo">
+        </section>
+        <nav>
+        <section class="topnav">
+            <a href="Log In.html">Log In</a>
+            <a href="Order.html">Order</a>
+            <a href="Blog.html">Blog</a>
+            <a href="About Us.html">About Us</a>
+            <a href="Contact.html">Contact us</a>
+            <a href="Menu.html" class="active">Menu</a>
+            <a href="Index.html" >Home</a>
+        </section>
+        </nav>
+    </div>
+    </header>
+    <br><br><br>
+    <div class="container">
+        <p class="menuB">Breakfast</p>
+        <section class="food" id="breakfast-section"></section>
+        <p class="menuB">Lunch & Dinner</p>
+        <section class="food" id="lunch&dinner-section"></section><br>
+        <section class="food" id="lunch&dinner1-section"></section> 
+        <p class="menuB">Sides</p>
+        <section class="food" id="sides-section"></section> 
+        <p class="menuB">Drinks</p>
+        <section class="food" id="drink-section"></section> 
+    </div>
+    
+    
+        <br>
+            <!--Email subscription for coupon and discount-->
+    <section>
+        <form class="subscribe">
+            <h2>SUBSCRIBE</h2>
+            <p>Sign up to hear from us about sales, coupons and events</p>
+            <input type="email" id="sub" placeholder="Email">
+            <button id="sub1" onclick="subscribe()">Sign up</button>
+        </form>
+        <!--alert message with the use of javascript-->
+        <script>
+            const menuItems = {
+        "breakfast": [
+            {name: 'Bread and Eggs', price: 15.00, image: "../images/bread&eggs.jpg"},
+            {name: 'Beanscake and pap', price: 15.99, image: "../images/pap&akara.jpg"},
+            {name: 'Noodles and Eggs', price: 12.99, image: "../images/noodles.jpg"}
+        ],
+        "lunch&dinner": [
+            {name: 'Abula (Amala, assorted beef soup and ewedu)', price: 25.00, image: "../images/AmalaEwedujpeg.jpeg"},
+            {name: 'Poundedyam and melon Vegetable soup', price: 25.00, image: "../images/Poundedyamjpg.jpg"},
+            {name: 'Ayamashe and White rice', price: 22.99, image: "../images/ayamashe.jpg"},
+            {name: 'FriedEggs and Yam', price: 23.99, image: "../images/yam&eggs.jpg"}
+        ],
+        "lunch&dinner1": [
+            {name: 'Jollofrice and Beef', price: 22.00, image: "../images/jollofrice.jpg"},
+            {name: 'Friedrice and Beef', price: 22.00, image: "../images/friedrice.jpg"},
+            {name: 'Beans and Agege bread', price: 19.99, image: "../images/Beans.jpg"}
+        ],
+        "sides": [
+            {name: 'Plantain', price: 9.99, image: "../images/plantainjpg.jpg"},
+            {name: 'Beans pudding (Moi Moi)', price: 9.99, image: "../images/moimoi.jpg"},
+            {name: 'Plantain Gizzard', price: 10.99, image: "../images/gizzaddodo.jpg"}
+        ],
+        "drinks": [
+            {name: 'Water', price: 2.99, image: "../images/water.jpg"},
+            {name: 'Fanta', price: 3.99, image: "../images/fanta.jpg"},
+            {name: 'Sprite', price: 3.99, image: "../images/sprite.jpg"},
+            {name: 'Coca Cola', price: 3.99, image: "../images/coke.jpg"}
+        ]
+    };
+
+    // Function to generate menu items
+    function generateMenuItems(menuType) {
+        const menuSection = document.getElementById(`${menuType}-section`);
+        menuSection.innerHTML = "";
+        menuItems[menuType].forEach(item => {
+            const menuItem = document.createElement('div');
+            menuItem.innerHTML = `
+                <button onclick="openModal('${item.name}', ${item.price})">
+                    <img src="${item.image}" alt="${item.name}">
+                    <p><b>${item.name}</b></p>
+                    <p><b>$${item.price.toFixed(2)}</b></p>
+                </button>
+            `;
+            menuSection.appendChild(menuItem);
+        });
+    }
+
+    for (const menuType in menuItems) {
+        generateMenuItems(menuType);
+    }
+    function openModal(itemName, itemPrice) {
+        localStorage.setItem('selectedItemName', itemName);
+        localStorage.setItem('selectedItemPrice', itemPrice);
+        window.location.href = 'Order.html'; // Redirect to the Order.html form
+    }
+            function subscribe(){
+                    alert("Thank you for subscribing!");
+                    }
+        </script>
+    </section>
+    <br><br>
+    <!--Cafeteria Copyright-->
+    <footer>
+        <p>Copyright &copy; 2024 naija cuisine cafeteria. All right reserved</p>
+    </footer>
+    <hr>
+    <!--Business operation hours and location-->
+    <aside class="operating">
+    <section class="hours">
+        <h3>Opening Hours</h3>
+        <p>Monday - 10am to 8pm</p>
+        <p>Tuesday - 10am to 8pm</p>
+        <p>Wednessday - 11am to 7pm</p>
+        <p>Thursday - 9am to 6pm </p>
+        <p>Friday - 9am to 6pm </p>
+        <p>Saturday - 11am to 4pm</p>
+        <p>sunday - closed</p>
+    </section>
+    
+    <section class="Contact">
+        <h3>Contact</h3>
+        <p>Phone: (832) 576-8400</p>
+        <p>Email: naijacuisine@gmail.com</p>
+    </section>
+    
+    <section class="location">
+        <h3>Location</h3>
+        <p>14000 University Blvd, Sugarland</p>
+        <p>Texas 77479</p>
+    </section>
+</aside>
+
+</body>
+</html>
