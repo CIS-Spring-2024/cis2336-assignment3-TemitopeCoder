@@ -15,9 +15,8 @@
         </section>
         <nav>
         <section class="topnav">
-            <a href="Log In.html">Log In</a>
+           
             <a href="Order.html">Order</a>
-            <a href="Blog.html">Blog</a>
             <a href="About Us.html">About Us</a>
             <a href="Contact.html" class="active">Contact us</a>
             <a href="Menu.html">Menu</a>
@@ -26,6 +25,85 @@
         </nav>
     </div>
     </header>
+    <br><br><br>
+    <br>
+    <h1 class="contact">Contact us</h1>
+    <form method="post" class="contact_form">
+        <label>Name:</label><br>
+        <input type="text" id="name" required><br><br><br>
+        
+        <label>Phone</label><br>
+        <input type="tel" id="phone" required><br><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" id="email" required><br><br><br>
+
+        <label>Password:</label><br>
+        <input type="password" id="password"><br><br><br>
+
+        <label>Date of Birth</label><br>
+        <input type="date" id="dob"><br><br><br>
+
+        <p class="contact_m">Preferred contact method:</p>
+        <div class="radio-group">
+            <input type="radio" id="contact_email"
+            value="email">
+            <label>Email</label><br><br>
+
+            <input type="radio" id="contact_phone" value="phone">
+            <label>Phone</label>
+
+        </div>
+        <br><br>
+        <button type="submit" style="width: 200px; height: 50px; position: relative; top: 50%; left: 20%">Submit</button>
+
+    </form>
+    <br><br>
+    <!--Email subscription for coupon and discount-->
+    <section>
+        <form class="subscribe">
+            <h2>SUBSCRIBE</h2>
+            <p>Sign up to hear from us about sales, coupons and events</p>
+            <input type="email" id="sub" placeholder="Email">
+            <button id="sub1" onclick="subscribe()">Sign up</button>
+        </form>
+        <!--alert message with the use of javascript-->
+        <script>
+            function subscribe(){
+                    alert("Thank you for subscribing!");
+                    }
+        </script>
+    </section>
+    <br><br>
+    <!--Cafeteria Copyright-->
+    <footer>
+        <p>Copyright &copy; 2024 naija cuisine cafeteria. All right reserved</p>
+    </footer>
+    <hr>
+    <!--Business operation hours and location-->
+    <aside class="operating">
+    <section class="hours">
+        <h3>Opening Hours</h3>
+        <p>Monday - 10am to 8pm</p>
+        <p>Tuesday - 10am to 8pm</p>
+        <p>Wednessday - 11am to 7pm</p>
+        <p>Thursday - 9am to 6pm </p>
+        <p>Friday - 9am to 6pm </p>
+        <p>Saturday - 11am to 4pm</p>
+        <p>sunday - closed</p>
+    </section>
     
+    <section class="Contact">
+        <h3>Contact</h3>
+        <p>Phone: (832) 576-8400</p>
+        <p>Email: naijacuisine@gmail.com</p>
+    </section>
+    
+    <section class="location">
+        <h3>Location</h3>
+        <p>14000 University Blvd, Sugarland</p>
+        <p>Texas 77479</p>
+    </section>
+</aside>
 </body>
 </html>

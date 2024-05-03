@@ -199,3 +199,47 @@ footer{
    font-weight: bold;
    font-size: large;
 }
+.contact{
+    font-size:100%;
+    text-align:center;
+    text-transform:uppercase;
+    font-style:initial;
+    font-weight:1000;
+    font-size: 80px;
+    background-color: rgba(255, 255, 0, 0.767);
+    width: 1300px;
+    height: 80px;  
+}
+.contact_form input {
+    height: 30px;
+    width: 700px;
+    
+}
+.contact_form label {
+    align-items: center;
+    font-size: large;
+}
+.about {
+    font-size:100%;
+    text-align:center;
+    text-transform:uppercase;
+    font-style:initial;
+    font-weight:1000;
+    font-size: 80px;
+    background-color: rgba(255, 255, 0, 0.767);
+    width: 1300px;
+    height: 80px;  
+}
+.about_info{
+    display: flex;
+    justify-content:flex-start;
+}
+
+.about_text{
+    width:600px;
+    height: 500PX;
+    font-size: large;
+}
+.contact_m{
+    font-size: larger;
+}

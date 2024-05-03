@@ -16,9 +16,8 @@
         </section>
         <nav>
             <section class="topnav">
-                <a href="Log In.html">Log In</a>
+                
                 <a href="Order.html" class="active">Order</a>
-                <a href="Blog.html">Blog</a>
                 <a href="About Us.html">About Us</a>
                 <a href="Contact.html">Contact us</a>
                 <a href="Menu.html">Menu</a>
@@ -53,8 +52,7 @@
 
 <!-- JavaScript code for menu items and order form -->
 <script>
-
-    let subtotal = 0;
+let subtotal = 0;
 
     window.addEventListener('DOMContentLoaded', function() {
         const selectedItemName = localStorage.getItem('selectedItemName');
@@ -92,13 +90,19 @@
     function addToOrder(itemName, itemPrice) {
         const quantity = parseInt(document.getElementById("quantity").value);
         const orderForm = document.getElementById("food-order-form");
-        const totalPrice = itemPrice * quantity;
-        subtotal += totalPrice;
-        const orderItem = document.createElement('div');
-        orderItem.innerHTML = `<p>${itemName}:  Quantity - ${quantity}, Total Price - $${totalPrice.toFixed(2)}</p>` ;
-        orderForm.appendChild(orderItem);
-        document.getElementById("subtotal").innerText = `Subtotal: $${subtotal.toFixed(2)}`;
-        closeModal();
+
+        // Check if quantity is within valid range
+        if (quantity >= 1 && quantity <= 10) {
+            const totalPrice = itemPrice * quantity;
+            subtotal += totalPrice;
+            const orderItem = document.createElement('div');
+            orderItem.innerHTML = `<p>${itemName}:  Quantity - ${quantity}, Total Price - $${totalPrice.toFixed(2)}</p>` ;
+            orderForm.appendChild(orderItem);
+            document.getElementById("subtotal").innerText = `Subtotal: $${subtotal.toFixed(2)}`;
+            closeModal();
+        } else {
+            alert("Please enter a quantity between 1 and 10.");
+        }
     }
     
 
